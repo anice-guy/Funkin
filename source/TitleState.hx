@@ -13,24 +13,22 @@ import flixel.group.FlxGroup;
 import flixel.input.gamepad.FlxGamepad;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
-import flixel.system.FlxSound;
+import flixel.sound.FlxSound;
 import flixel.system.ui.FlxSoundTray;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import io.newgrounds.NG;
 import lime.app.Application;
 import openfl.Assets;
-import polymod.Polymod;
 
 using StringTools;
 
 class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
-	static public var soundExt:String = ".mp3";
+	static public var soundExt:String = ".ogg";
 
 	var blackScreen:FlxSprite;
 	var credGroup:FlxGroup;
@@ -42,13 +40,7 @@ class TitleState extends MusicBeatState
 
 	var wackyImage:FlxSprite;
 
-	override public function create():Void
-	{
-		Polymod.init({modRoot: "mods", dirs: ['introMod']});
-
-		#if (!web)
-		TitleState.soundExt = '.ogg';
-		#end
+	override public function create():Void {
 
 		PlayerSettings.init();
 
@@ -57,13 +49,6 @@ class TitleState extends MusicBeatState
 		// DEBUG BULLSHIT
 
 		super.create();
-
-		NGio.noLogin(APIStuff.API);
-
-		#if ng
-		var ng:NGio = new NGio(APIStuff.API, APIStuff.EncKey);
-		trace('NEWGROUNDS LOL');
-		#end
 
 		FlxG.save.bind('funkin', 'ninjamuffin99');
 
@@ -252,13 +237,9 @@ class TitleState extends MusicBeatState
 
 		if (pressedEnter && !transitioning && skippedIntro)
 		{
-			#if !switch
-			NGio.unlockMedal(60960);
-
 			// If it's Friday according to da clock
 			if (Date.now().getDay() == 5)
-				NGio.unlockMedal(61034);
-			#end
+				trace('hehe it friday');
 
 			titleText.animation.play('press');
 
@@ -268,11 +249,12 @@ class TitleState extends MusicBeatState
 			transitioning = true;
 			// FlxG.sound.music.stop();
 
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
+			new FlxTimer().start(2, function(tmr:FlxTimer) {
+				FlxG.switchState(new MainMenuState());
+
 				// Check if version is outdated
 
-				var version:String = "v" + Application.current.meta.get('version');
+				/*var version:String = "v" + Application.current.meta.get('version');
 
 				if (version.trim() != NGio.GAME_VER_NUMS && !OutdatedSubState.leftState)
 				{
@@ -282,7 +264,7 @@ class TitleState extends MusicBeatState
 				else
 				{
 					FlxG.switchState(new MainMenuState());
-				}
+				}*/
 			});
 			// FlxG.sound.play('assets/music/titleShoot' + TitleState.soundExt, 0.7);
 		}

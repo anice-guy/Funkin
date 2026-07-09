@@ -5,7 +5,7 @@ Based out of Funkin v0.2.7.1
 Play the original game one here: https://www.newgrounds.com/portal/view/770371  
 Support Funkin' on their itch.io page: https://ninja-muffin24.itch.io/funkin  
 
-## Credits / shoutouts
+## Credits
 
 ### Placeholder Engine
 - [angg](https://x.com/anicer_guy) - Main Dev  
@@ -16,20 +16,20 @@ Support Funkin' on their itch.io page: https://ninja-muffin24.itch.io/funkin
 - [PhantomArcade3K](https://x.com/phantomarcade3k) and [Evilsk8r](https://x.com/evilsk8r) - Art
 - [Kawaisprite](https://x.com/kawaisprite) - Musician
 
-This game was made with love to Newgrounds and it's community. Extra love to Tom Fulp.
-
 ## Build instructions
 
-### Installing shit
-You'll need Haxe and HaxeFlixel, you might probably already have these if you're bothering to read this guide  
-To compile for Windows you will need MSVC and the Windows SDK, you can get these by installing Visual Studio Community, but do NOT choose the desktop c++ workload or whatever its called, it includes a bunch of shit youll never use  
-instead, install the components i mentioned earlier individually  
+### Prerequisetes
+First, you'll need to [get Haxe](https://haxe.org/download/) and [get HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/), you might probably already have these if you're bothering to read this guide  
+To compile for Windows you will need MSVC and the Windows SDK, you can get these by installing [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/), but do NOT choose the desktop c++ workload or whatever its called, it includes a bunch of shit youll never use  
+instead, install both components i mentioned earlier individually  
 
 it's also possible to install these components WITHOUT the need of the full Visual Studio IDE, but i wont go into detail (vaguepost king)  
 if you wanna figure it out, search "visual studio build tools" on google or other search engine if youre weird.
 
-### Compiling game
-To just compile for your OS run:
+For linux and mac Uhhhh Idk LMao sorrey  
+
+### Making the videoGame
+To compile for your current OS run:
 ```bash
 lime build cpp
 ```
@@ -39,5 +39,5 @@ To compile and run do:
 lime test cpp
 ```
 
-You can also append the `-debug` flag to build a debug build (duh)
-also do `-verbose` for more info on the build process
+You can also append the `-debug` flag to compile a debug build
+also do `-verbose` for more info on the compiling process

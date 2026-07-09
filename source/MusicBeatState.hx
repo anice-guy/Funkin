@@ -7,7 +7,7 @@ import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
 
-class MusicBeatState extends FlxUIState
+class MusicBeatState extends FlxTransitionableState
 {
 	private var lastBeat:Float = 0;
 	private var lastStep:Float = 0;
